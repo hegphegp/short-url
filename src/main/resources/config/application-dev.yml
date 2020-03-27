@@ -1,0 +1,48 @@
+su:
+  logPath: logs
+  # 缓存时间，单位分钟
+  shortUrlCacheTime: 2
+  domain: http://localhost:8888
+  shortUrlDomain: http://localhost:8888/s/
+  encrypt:
+    sign:
+      salt: su123456
+    rsa:
+      modulusStr: 149246585067290098379974496821592866542960688627752537853381707458418110879617540066249968682406585487936375704618086460702827822256993644826822481187588202108026140296243995589999713881082584689022640061192408462068586934866428077923899172846268634621405780207692985593351399409419171090867960278537453199809
+      publicExpStr: 65537
+      privateExpStr: 34603382213062438696975944568779523126177390843320564149749531483446956601855265289938023927387095327665184992167353155780390752692296236219899714690104862274844501510468914759194125416279761480532907421439069142852774900755582526846701063667340822346597169106458321912113055476738211451143257390823722071873
+
+
+spring:
+  # 数据源
+  datasource:
+    url: jdbc:postgresql://localhost:5432/short-url
+    username: sde
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      max-lifetime: 1830000
+      maximum-pool-size: 10
+  # Redis
+  redis:
+    host: localhost
+    password: admin
+    # 数据库索引 默认0
+    database: 3
+    port: 6379
+    # 超时时间 Duration类型 3秒
+    timeout: 3S
+
+## 日志
+#logging:
+#  # 输出级别
+#  level:
+#    root: info
+#  file:
+#    # 指定路径
+#    path: xboot-logs
+#    # 最大保存天数
+#    max-history: 7
+#    # 每个文件最大大小
+#    max-size: 5MB

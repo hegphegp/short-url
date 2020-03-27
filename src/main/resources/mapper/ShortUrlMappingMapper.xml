@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.shorturl.modules.shorter.dao.mapper.ShortUrlMappingMapper">
+
+    <!--获取最大的id值-->
+    <select id="findMaxkeyidLong" resultType="java.lang.Long">
+        SELECT max(short_url_keyid_long) FROM surl_short_url_mapping
+    </select>
+
+    <!--通过 短链后缀 获取-->
+    <select id="findByShortUrlKeyid" resultType="com.su.shorturl.modules.shorter.entity.ShortUrlMapping">
+        SELECT t.*
+        FROM surl_short_url_mapping t
+        WHERE t.short_url_keyid = #{shortUrlKeyid}
+    </select>
+
+    <!--通过 长地址 获取-->
+    <select id="findByOriginalUrl" resultType="com.su.shorturl.modules.shorter.entity.ShortUrlMapping">
+        SELECT t.*
+        FROM surl_short_url_mapping t
+        WHERE t.original_url = #{originalUrl}
+    </select>
+
+
+
+</mapper>
